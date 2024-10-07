@@ -1,12 +1,18 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './layout/App.tsx'
+//import React from 'react';
+import ReactDOM from 'react-dom/client';
 import 'semantic-ui-css/semantic.min.css'
 import './layout/style.css'
+import App from './layout/App';
+//import reportWebVitals from './rep';
+import { store, StoreContext } from './stores/store';
 
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <StoreContext.Provider value={store}>
     <App />
-  </StrictMode>,
-)
+  </StoreContext.Provider>
+);
+//reportWebVitals();
